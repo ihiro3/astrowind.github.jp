@@ -72,7 +72,7 @@ export default defineConfig({
   ],
 
   image: {
-    domains: ['cdn.pixabay.com'],
+    domains: ['cdn.pixabay.com', 'plus.unsplash.com', 'images.unsplash.com', 'images.microcms-assets.io'],
   },
 
   markdown: {
