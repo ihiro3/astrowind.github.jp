@@ -1,0 +1,68 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { client } from '~/lib/microcms';
+
+// 1. 重要：[...blog] という動的ルートを「/blog」として認識させるための設定
+export async function getStaticPaths() {
+  return [
+    { params: { blog: undefined } }
+  ];
+}
+
+// 2. microCMSから記事一覧を取得
+// 最新順（-date）に並べ、ID・タイトル・日付を取得します
+const response = await client.get({
+  endpoint: 'blogs',
+  queries: { 
+    fields: 'id,title,date', 
+    orders: '-date' 
+  }
+});
+
+const metadata = {
+  title: '活動報告一覧 | 精華町議会議員',
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="px-6 py-12 sm:px-6 max-w-3xl mx-auto">
+    <header class="mb-10 text-center">
+      <h1 class="text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+        活動報告
+      </h1>
+      <p class="text-muted text-xl">
+        日々の議員活動や精華町の最新情報をお届けします。
+      </p>
+    </header>
+
+    <div class="grid gap-6">
+      {response.contents.map((post: any) => (
+        <article class="p-6 bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-gray-200 dark:border-slate-800 hover:shadow-md transition">
+          <div class="flex flex-col">
+            <time class="text-sm text-gray-500 mb-2">
+              {post.date ? post.date.substring(0, 10).replace(/-/g, '/') : "日付未設定"}
+            </time>
+            <h2 class="text-2xl font-bold mb-3">
+              <a 
+                href={`/blog/${post.id}`} 
+                class="hover:text-primary transition duration-200 ease-in"
+              >
+                {post.title}
+              </a>
+            </h2>
+            <div class="flex justify-end">
+              <a href={`/blog/${post.id}`} class="text-primary font-medium hover:underline">
+                続きを読む →
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    {/* 記事が一つもない場合の処理 */}
+    {response.contents.length === 0 && (
+      <p class="text-center text-gray-500 mt-10">現在、投稿されている記事はありません。</p>
+    )}
+  </section>
+</Layout>
