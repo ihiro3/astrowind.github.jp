@@ -1,79 +1,71 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 
 const metadata = {
-  title: 'Contact',
+  title: 'お問い合わせ・事務所案内 | 山下○○ 公式サイト',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
+  {/* 1. ページの見出し */}
+  <HeroText tagline="Contact" title="問い合わせ・事務所案内" />
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
+  {/* 2. 事務所情報（追加部分） */}
+  <Features2
+    title="山下○○ 事務所"
+    subtitle="市政に関するご相談や、後援会への入会申込みなどお気軽にご連絡ください。"
+    items={[
+      {
+        title: '所在地',
+        description: '〒000-0000 〇〇市〇〇町1-2-3<br />〇〇ビル 2F',
+        icon: 'tabler:map-pin',
+      },
+      {
+        title: '電話 / FAX',
+        description: 'TEL: 00-0000-0000<br />FAX: 00-0000-0000',
+        icon: 'tabler:phone',
+      },
+      {
+        title: '受付時間',
+        description: '平日: 9:00 〜 17:00<br />（土日祝・年末年始を除く）',
+        icon: 'tabler:clock',
+      },
+    ]}
+  />
 
+  {/* 3. メッセージ送信フォーム（以前のものも残した状態） */}
   <ContactUs
     id="form"
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
+    title="メッセージを送る"
+    subtitle="地域の皆様の声が、より良い街づくりの原動力です。"
     inputs={[
       {
         type: 'text',
         name: 'name',
-        label: 'Name',
+        label: 'お名前',
       },
       {
         type: 'email',
         name: 'email',
-        label: 'Email',
+        label: 'メールアドレス',
       },
     ]}
     textarea={{
-      label: 'Message',
+      label: 'メッセージ内容',
     }}
     disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+      label: '送信いただいた個人情報は、お問い合わせへの回答のみに使用いたします。',
     }}
-    description="Our support team typically responds within 24 business hours."
+    button="メッセージを送信する（Google フォームへ）"
   />
 
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="We are here to help!"
-    items={[
-      {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
-      },
-      {
-        title: 'Contact sales',
-        description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
-      },
-      {
-        title: 'Technical support',
-        description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
-      },
-      {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
-        icon: 'tabler:headset',
-      },
-      {
-        title: 'Email',
-        description: 'contact@support.com',
-        icon: 'tabler:mail',
-      },
-      {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
-        icon: 'tabler:map-pin',
-      },
-    ]}
-  />
+  {/* 補足：フォームの動作について */}
+  <div class="max-w-3xl mx-auto text-center pb-24 px-4">
+    <p class="text-sm text-gray-500">
+      ※ 上記ボタンを押すと、安全にメッセージを届けるため Google フォームが開きます。
+    </p>
+  </div>
 </Layout>

@@ -1,72 +1,53 @@
+# サイト全体の基本情報
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
-  base: '/'
+  name: '山下○○ 公式サイト' # ご自身のお名前に書き換えてください
+  origin: 'https://astrowind-github-jp.vercel.app' # ご自身のドメイン
+  basePathname: '/'
   trailingSlash: false
 
-  googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
+  title: '山下○○ | 〇〇市議会議員 公式サイト'
+  description: '地域と共に歩む。山下○○の活動報告、政策、プロフィールをお届けします。'
 
-# Default SEO metadata
-metadata:
-  title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
-  robots:
-    index: true
-    follow: true
-  openGraph:
-    site_name: AstroWind
-    images:
-      - url: '~/assets/images/default.png'
-        width: 1200
-        height: 628
-    type: website
-  twitter:
-    handle: '@arthelokyo'
-    site: '@arthelokyo'
-    cardType: summary_large_image
+# ブログ（活動履歴）の設定
+blog:
+  disabled: false
+  postsPerPage: 6
+  isRelatedPostsEnabled: true
+  relatedPostsCount: 4
+  post:
+    disabled: false
+    renderFullContent: false
+  list:
+    disabled: false
+  category:
+    disabled: false
+  tag:
+    disabled: false
 
-i18n:
-  language: en
-  textDirection: ltr
+# 画像の設定（ここが重要です！）
+image:
+  service: 'astro' # Astro 6標準の画像処理を使用
 
-apps:
-  blog:
-    isEnabled: true
-    postsPerPage: 6
+# お問い合わせやSNSの設定
+header:
+  links:
+    - text: 'トップ'
+      href: '/'
+    - text: '活動報告'
+      href: '/blog'
+    - text: 'プロフィール'
+      href: '/about'
+    - text: 'お問い合わせ'
+      href: '/contact'
 
-    post:
-      isEnabled: true
-      permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
-      robots:
-        index: true
-
-    list:
-      isEnabled: true
-      pathname: 'blog' # Blog main path, you can change this to "articles" (/articles)
-      robots:
-        index: true
-
-    category:
-      isEnabled: true
-      pathname: 'category' # Category main path /category/some-category, you can change this to "group" (/group/some-category)
-      robots:
-        index: true
-
-    tag:
-      isEnabled: true
-      pathname: 'tag' # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
-      robots:
-        index: false
-
-    isRelatedPostsEnabled: true
-    relatedPostsCount: 4
-
-analytics:
-  vendors:
-    googleAnalytics:
-      id: null # or "G-XXXXXXXXXX"
-
-ui:
-  theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+footer:
+  secondaryLinks:
+    - text: 'プライバシーポリシー'
+      href: '/privacy'
+  socialLinks:
+    - ariaLabel: 'X'
+      icon: 'tabler:brand-x'
+      href: '#' # ご自身のX（旧Twitter）のURL
+    - ariaLabel: 'Facebook'
+      icon: 'tabler:brand-facebook'
+      href: '#' # ご自身のFacebookのURL
