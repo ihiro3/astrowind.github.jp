@@ -2,6 +2,7 @@ import { isUnpicCompatible, unpicOptimizer, astroAssetsOptimizer } from './image
 import type { ImageMetadata } from 'astro';
 import type { OpenGraph } from '@astrolib/seo';
 import type { ImagesOptimizer } from './images-optimization';
+
 /** The optimized image shape returned by our ImagesOptimizer */
 type OptimizedImage = Awaited<ReturnType<ImagesOptimizer>>[0];
 
@@ -9,7 +10,6 @@ const load = async function () {
   let images: Record<string, () => Promise<unknown>> | undefined = undefined;
   try {
     images = import.meta.glob('~/assets/images/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,JPEG,JPG,PNG,TIFF,WEBP,GIF,SVG}');
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     // continue regardless of error
   }
@@ -28,17 +28,14 @@ export const fetchLocalImages = async () => {
 export const findImage = async (
   imagePath?: string | ImageMetadata | null
 ): Promise<string | ImageMetadata | undefined | null> => {
-  // Not string
   if (typeof imagePath !== 'string') {
     return imagePath;
   }
 
-  // Absolute paths
   if (imagePath.startsWith('http://') || imagePath.startsWith('https://') || imagePath.startsWith('/')) {
     return imagePath;
   }
 
-  // Relative paths or not "~/assets/"
   if (!imagePath.startsWith('~/assets/images')) {
     return imagePath;
   }
@@ -51,10 +48,10 @@ export const findImage = async (
     : null;
 };
 
-/** */
+/** 修正ポイント：Invalid URLを回避するようにガードを強化 */
 export const adaptOpenGraphImages = async (
   openGraph: OpenGraph = {},
-  astroSite: URL | undefined = new URL('')
+  astroSite: URL | undefined = undefined
 ): Promise<OpenGraph> => {
   if (!openGraph?.images?.length) {
     return openGraph;
@@ -69,9 +66,7 @@ export const adaptOpenGraphImages = async (
       if (image?.url) {
         const resolvedImage = (await findImage(image.url)) as ImageMetadata | string | undefined;
         if (!resolvedImage) {
-          return {
-            url: '',
-          };
+          return { url: '' };
         }
 
         let _image: OptimizedImage | undefined;
@@ -91,20 +86,27 @@ export const adaptOpenGraphImages = async (
         }
 
         if (typeof _image === 'object') {
+          // 【修正箇所】URLの組み立てを安全に行う
+          let finalUrl = '';
+          try {
+            if ('src' in _image && typeof _image.src === 'string') {
+              // astroSite が無効な場合は、相対パスとして処理する
+              finalUrl = astroSite && astroSite.href !== 'about:blank' 
+                ? new URL(_image.src, astroSite).toString() 
+                : _image.src;
+            }
+          } catch (e) {
+            finalUrl = _image.src || '';
+          }
+
           return {
-            url: 'src' in _image && typeof _image.src === 'string' ? String(new URL(_image.src, astroSite)) : '',
+            url: finalUrl,
             width: 'width' in _image && typeof _image.width === 'number' ? _image.width : undefined,
             height: 'height' in _image && typeof _image.height === 'number' ? _image.height : undefined,
           };
         }
-        return {
-          url: '',
-        };
       }
-
-      return {
-        url: '',
-      };
+      return { url: '' };
     })
   );
 
