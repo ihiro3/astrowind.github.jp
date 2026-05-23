@@ -10,7 +10,7 @@ const load = async function () {
   let images: Record<string, () => Promise<unknown>> | undefined = undefined;
   try {
     images = import.meta.glob('~/assets/images/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,JPEG,JPG,PNG,TIFF,WEBP,GIF,SVG}');
-  } catch (error) {
+  } catch {
     // continue regardless of error
   }
   return images;
@@ -91,11 +91,10 @@ export const adaptOpenGraphImages = async (
           try {
             if ('src' in _image && typeof _image.src === 'string') {
               // astroSite が無効な場合は、相対パスとして処理する
-              finalUrl = astroSite && astroSite.href !== 'about:blank' 
-                ? new URL(_image.src, astroSite).toString() 
-                : _image.src;
+              finalUrl =
+                astroSite && astroSite.href !== 'about:blank' ? new URL(_image.src, astroSite).toString() : _image.src;
             }
-          } catch (e) {
+          } catch {
             finalUrl = _image.src || '';
           }
 

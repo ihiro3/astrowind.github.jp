@@ -25,7 +25,7 @@ export default defineConfig({
   // --- ここを追加しました ---
   site: 'https://astrowind-github-jp.vercel.app',
   // -----------------------
-  
+
   output: 'static',
 
   integrations: [

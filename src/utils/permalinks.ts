@@ -31,17 +31,17 @@ export const POST_PERMALINK_PATTERN = trimSlash(APP_BLOG?.post?.permalink || `${
 export const getCanonical = (path = ''): string | URL => {
   // SITE.site が無い場合に備えて、空文字や '/' を避ける「安全策」をとります
   const base = SITE.site || 'https://example.com'; // 万が一空でもエラーにしない
-  
+
   try {
     const url = String(new URL(path, base));
-    
+
     if (SITE.trailingSlash == false && path && url.endsWith('/')) {
       return url.slice(0, -1);
     } else if (SITE.trailingSlash == true && path && !url.endsWith('/')) {
       return url + '/';
     }
     return url;
-  } catch (e) {
+  } catch {
     // URL作成に失敗した場合は、そのままパスを返す（ビルドを止めない）
     return path;
   }

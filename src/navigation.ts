@@ -1,6 +1,15 @@
+import type { CallToAction } from '~/types';
 import { getBlogPermalink } from './utils/permalinks';
 
-export const headerData = {
+type HeaderLink = {
+  text: string;
+  href: string;
+};
+
+export const headerData: {
+  links: HeaderLink[];
+  actions: CallToAction[];
+} = {
   links: [
     { text: 'トップ', href: '/' },
     { text: '政策提言', href: '/#policy' },
@@ -29,9 +38,7 @@ export const footerData = {
       ],
     },
   ],
-  secondaryLinks: [
-    { text: 'プライバシーポリシー', href: '/privacy' },
-  ],
+  secondaryLinks: [{ text: 'プライバシーポリシー', href: '/privacy' }],
   socialLinks: [
     { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
     { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
