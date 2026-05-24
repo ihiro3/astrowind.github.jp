@@ -4,8 +4,8 @@ import { visit } from 'unist-util-visit';
 import type { Plugin } from 'unified';
 import type { Node, Parent } from 'unist';
 
-type RemarkPlugin = Plugin<any[], any>;
-type RehypePlugin = Plugin<any[], any>;
+type RemarkPlugin = Plugin<unknown[], unknown>;
+type RehypePlugin = Plugin<unknown[], unknown>;
 
 interface Element extends Node {
   type: 'element';
