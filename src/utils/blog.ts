@@ -84,7 +84,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
 
     title: title,
     excerpt: excerpt,
-    image: typeof rawImage === 'string' ? resolvePostImage(rawImage) ?? rawImage : rawImage,
+    image: typeof rawImage === 'string' ? (resolvePostImage(rawImage) ?? rawImage) : rawImage,
 
     category: category,
     tags: tags,
