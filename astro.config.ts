@@ -80,8 +80,10 @@ export default defineConfig({
   },
 
   markdown: {
-    remarkPlugins: [readingTimeRemarkPlugin] as any,
-    rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin] as any,
+    // @ts-expect-error - Plugin type compatibility issue
+    remarkPlugins: [readingTimeRemarkPlugin],
+    // @ts-expect-error - Plugin type compatibility issue
+    rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
   },
 
   vite: {
