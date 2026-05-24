@@ -1,4 +1,4 @@
-import type { CallToAction } from '~/types';
+import type { CallToAction } from './types.d.ts';
 import { getBlogPermalink } from './utils/permalinks';
 
 type HeaderLink = {

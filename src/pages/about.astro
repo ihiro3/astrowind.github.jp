@@ -1,12 +1,15 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Content from '~/components/widgets/Content.astro';
-import Steps from '~/components/widgets/Steps.astro';
+import Layout from '../layouts/PageLayout.astro';
+import Hero from '../components/widgets/Hero.astro';
+import Content from '../components/widgets/Content.astro';
+import Steps from '../components/widgets/Steps.astro';
 
 const metadata = {
   title: 'プロフィール | 山下○○ 公式サイト',
 };
+
+const profileImage = 'assets/images/profile-portrait.jpg';
+const heroImage = 'https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
 ---
 
 <Layout metadata={metadata}>
@@ -14,7 +17,7 @@ const metadata = {
   <Hero
     tagline="Profile"
     image={{
-      src: '~/assets/images/profile-portrait.jpg', // ご自身の写真パスに書き換えてください
+      src: profileImage, // ご自身の写真パスに書き換えてください
       alt: '山下○○の近影',
     }}
   >
@@ -73,7 +76,7 @@ const metadata = {
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      src: heroImage,
       alt: 'イメージ画像',
     }}
   />

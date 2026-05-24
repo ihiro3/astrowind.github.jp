@@ -1,8 +1,8 @@
 import { getRssString } from '@astrojs/rss';
 
 import { SITE, METADATA, APP_BLOG } from 'astrowind:config';
-import { fetchPosts } from '~/utils/blog';
-import { getPermalink } from '~/utils/permalinks';
+import { fetchPosts } from '../utils/blog.ts';
+import { getPermalink } from '../utils/permalinks.ts';
 
 export const GET = async () => {
   if (!APP_BLOG.isEnabled) {

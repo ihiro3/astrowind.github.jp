@@ -1,6 +1,6 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-import { fetchBlogs, type Blog } from '~/lib/microcms';
+import Layout from '../../layouts/PageLayout.astro';
+import { fetchBlogs, type Blog } from '../../lib/microcms.ts';
 
 // 1. 重要：[...blog] という動的ルートを「/blog」として認識させるための設定
 export async function getStaticPaths() {

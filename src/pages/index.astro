@@ -1,13 +1,15 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import Layout from '../layouts/PageLayout.astro';
+import Hero from '../components/widgets/Hero.astro';
+import Features2 from '../components/widgets/Features2.astro';
+import BlogLatestPosts from '../components/widgets/BlogLatestPosts.astro';
 
 const metadata = {
   title: '山下○○ 公式サイト | 〇〇市議会議員',
   ignoreTitleTemplate: true,
 };
+
+const heroImage = 'assets/images/hero.jpg';
 ---
 
 <Layout metadata={metadata}>
@@ -17,7 +19,7 @@ const metadata = {
       { variant: 'primary', text: '活動報告を見る', href: '/blog' },
       { text: 'お問い合わせ', href: '/contact' },
     ]}
-    image={{ src: '~/assets/images/hero.jpg', alt: '山下○○の近影' }}
+    image={{ src: heroImage, alt: '山下○○の近影' }}
   >
     <Fragment slot="title">
       地域と共に歩む、<br />

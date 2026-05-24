@@ -1,6 +1,6 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-import { fetchBlog, fetchBlogs, type Blog } from '~/lib/microcms';
+import Layout from '../../layouts/PageLayout.astro';
+import { fetchBlog, fetchBlogs, type Blog } from '../../lib/microcms.ts';
 
 // 全記事のIDを取得して、ページを事前に生成する
 export async function getStaticPaths() {

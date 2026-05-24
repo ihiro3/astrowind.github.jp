@@ -6,10 +6,13 @@ import type { ImagesOptimizer } from './images-optimization';
 /** The optimized image shape returned by our ImagesOptimizer */
 type OptimizedImage = Awaited<ReturnType<ImagesOptimizer>>[0];
 
+const LOCAL_IMAGE_PREFIX = 'assets/images/';
+const LOCAL_IMAGE_KEY_PREFIX = '/src/assets/images/';
+
 const load = async function () {
   let images: Record<string, () => Promise<unknown>> | undefined = undefined;
   try {
-    images = import.meta.glob('~/assets/images/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,JPEG,JPG,PNG,TIFF,WEBP,GIF,SVG}');
+    images = import.meta.glob('../assets/images/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,JPEG,JPG,PNG,TIFF,WEBP,GIF,SVG}');
   } catch {
     // continue regardless of error
   }
@@ -36,12 +39,12 @@ export const findImage = async (
     return imagePath;
   }
 
-  if (!imagePath.startsWith('~/assets/images')) {
+  if (!imagePath.startsWith(LOCAL_IMAGE_PREFIX)) {
     return imagePath;
   }
 
   const images = await fetchLocalImages();
-  const key = imagePath.replace('~/', '/src/');
+  const key = imagePath.replace(LOCAL_IMAGE_PREFIX, LOCAL_IMAGE_KEY_PREFIX);
 
   return images && typeof images[key] === 'function'
     ? ((await images[key]()) as { default: ImageMetadata })['default']
