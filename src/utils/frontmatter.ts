@@ -1,10 +1,22 @@
 import getReadingTime from 'reading-time';
 import { toString } from 'mdast-util-to-string';
 import { visit } from 'unist-util-visit';
-import type { RehypePlugin, RemarkPlugin } from '@astrojs/markdown-remark';
+import type { Plugin } from 'unified';
+import type { Node } from 'unist';
+
+type RemarkPlugin = Plugin;
+type RehypePlugin = Plugin;
+
+interface VFileLike {
+  data?: {
+    astro?: {
+      frontmatter?: Record<string, unknown>;
+    };
+  };
+}
 
 export const readingTimeRemarkPlugin: RemarkPlugin = () => {
-  return function (tree, file) {
+  return function (tree: Node, file: VFileLike) {
     const textOnPage = toString(tree);
     const readingTime = Math.ceil(getReadingTime(textOnPage).minutes);
 
@@ -15,7 +27,7 @@ export const readingTimeRemarkPlugin: RemarkPlugin = () => {
 };
 
 export const responsiveTablesRehypePlugin: RehypePlugin = () => {
-  return function (tree) {
+  return function (tree: Node & { children?: Node[] }) {
     if (!tree.children) return;
 
     for (let i = 0; i < tree.children.length; i++) {
@@ -38,7 +50,7 @@ export const responsiveTablesRehypePlugin: RehypePlugin = () => {
 };
 
 export const lazyImagesRehypePlugin: RehypePlugin = () => {
-  return function (tree) {
+  return function (tree: Node & { children?: Node[] }) {
     if (!tree.children) return;
 
     visit(tree, 'element', function (node) {
