@@ -2,10 +2,17 @@ import getReadingTime from 'reading-time';
 import { toString } from 'mdast-util-to-string';
 import { visit } from 'unist-util-visit';
 import type { Plugin } from 'unified';
-import type { Node } from 'unist';
+import type { Node, Parent } from 'unist';
 
-type RemarkPlugin = Plugin;
-type RehypePlugin = Plugin;
+type RemarkPlugin = Plugin<any[], any>;
+type RehypePlugin = Plugin<any[], any>;
+
+interface Element extends Node {
+  type: 'element';
+  tagName: string;
+  properties?: Record<string, unknown>;
+  children?: Node[];
+}
 
 interface VFileLike {
   data?: {
@@ -27,11 +34,11 @@ export const readingTimeRemarkPlugin: RemarkPlugin = () => {
 };
 
 export const responsiveTablesRehypePlugin: RehypePlugin = () => {
-  return function (tree: Node & { children?: Node[] }) {
+  return function (tree: Parent) {
     if (!tree.children) return;
 
     for (let i = 0; i < tree.children.length; i++) {
-      const child = tree.children[i];
+      const child = tree.children[i] as Element;
 
       if (child.type === 'element' && child.tagName === 'table') {
         tree.children[i] = {
@@ -41,7 +48,7 @@ export const responsiveTablesRehypePlugin: RehypePlugin = () => {
             style: 'overflow:auto',
           },
           children: [child],
-        };
+        } as Element;
 
         i++;
       }
@@ -50,11 +57,12 @@ export const responsiveTablesRehypePlugin: RehypePlugin = () => {
 };
 
 export const lazyImagesRehypePlugin: RehypePlugin = () => {
-  return function (tree: Node & { children?: Node[] }) {
+  return function (tree: Parent) {
     if (!tree.children) return;
 
-    visit(tree, 'element', function (node) {
+    visit(tree, 'element', function (node: Element) {
       if (node.tagName === 'img') {
+        node.properties = node.properties || {};
         node.properties.loading = 'lazy';
       }
     });
