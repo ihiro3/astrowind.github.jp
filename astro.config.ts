@@ -80,8 +80,8 @@ export default defineConfig({
   },
 
   markdown: {
-    remarkPlugins: [readingTimeRemarkPlugin],
-    rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
+    remarkPlugins: [readingTimeRemarkPlugin] as any,
+    rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin] as any,
   },
 
   vite: {
