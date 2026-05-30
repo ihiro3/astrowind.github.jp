@@ -34,9 +34,6 @@ jobs:
           node-version: '24'
           cache: 'pnpm'
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
@@ -44,15 +41,12 @@ jobs:
         run: pnpm run build
 
       - name: Create .nojekyll
-        run: |
-          touch ./dist/.nojekyll
-          echo "Created .nojekyll file to disable Jekyll processing"
+        run: touch ./dist/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
-          include-hidden-files: true
 
       - name: Deploy to GitHub Pages
         id: deployment
