@@ -1,12 +1,12 @@
 # サイト全体の基本情報
 site:
-  name: '山下○○ 公式サイト' # ご自身のお名前に書き換えてください
-  origin: 'https://astrowind-github-jp.vercel.app' # ご自身のドメイン
+  name: '精華町議会 爽風会 公式サイト'
+  origin: 'https://astrowind-github-jp.vercel.app'
   basePathname: '/'
   trailingSlash: false
 
-  title: '山下○○ | 〇〇市議会議員 公式サイト'
-  description: '地域と共に歩む。山下○○の活動報告、政策、プロフィールをお届けします。'
+  title: '精華町議会 爽風会 公式サイト'
+  description: '精華町の未来を切り拓く。爽風会の活動報告、政策、プロフィールをお届けします。代表：岡田三郎、経理責任者：辻井崇余、メンバー：尾崎智、山下芳一'
 
 # ブログ（活動履歴）の設定
 blog:

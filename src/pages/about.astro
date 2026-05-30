@@ -5,7 +5,7 @@ import Content from '../components/widgets/Content.astro';
 import Steps from '../components/widgets/Steps.astro';
 
 const metadata = {
-  title: 'プロフィール | 山下○○ 公式サイト',
+  title: 'プロフィール | 精華町議会 爽風会 公式サイト',
 };
 
 const profileImage = 'assets/images/profile-portrait.jpg';
@@ -18,67 +18,72 @@ const heroImage =
   <Hero
     tagline="Profile"
     image={{
-      src: profileImage, // ご自身の写真パスに書き換えてください
-      alt: '山下○○の近影',
+      src: profileImage,
+      alt: '爽風会のメンバー',
     }}
   >
     <Fragment slot="title">
-      地域の未来を、<br />
+      精華町の未来を、<br />
       <span class="text-accent dark:text-white highlight">皆様と共に創る。</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      私は、この街で生まれ育ち、地域の皆様の温かさに支えられてきました。今度は私が、市政という場から恩返しをする番です。
+      爽風会は、精華町の発展と住民の幸せを願い、市政に取り組む議員会派です。代表：岡田三郎、経理責任者：辻井崇余、メンバー：尾崎智、山下芳一
     </Fragment>
   </Hero>
 
-  {/* --- 2. 略歴（タイムライン形式） --- */}
+  {/* --- 2. 会派メンバー --- */}
   <Steps
-    title="歩みと経歴"
+    title="会派メンバー"
     items={[
       {
-        title: '誕生・学生時代',
-        description: '19XX年、〇〇市生まれ。〇〇市立〇〇小学校、〇〇中学校を卒業。',
+        title: '代表：岡田三郎',
+        description: '精華町議会議員。地域の声を市政に届け、より良い街づくりに尽力します。',
+        icon: 'tabler:user-star',
+      },
+      {
+        title: '経理責任者：辻井崇余',
+        description: '精華町議会議員。透明性のある市政運営と財政健全化を推進します。',
+        icon: 'tabler:calculator',
+      },
+      {
+        title: 'メンバー：尾崎智',
+        description: '精華町議会議員。子育て・教育環境の充実に重点を置いて活動します。',
         icon: 'tabler:school',
       },
       {
-        title: '民間企業での経験',
-        description: '大学卒業後、〇〇株式会社に入社。営業職として現場の声を聴く大切さを学びました。',
-        icon: 'tabler:briefcase',
-      },
-      {
-        title: '政治の道へ',
-        description: '地域の課題を解決したいという想いから、市議会議員に初当選。現在○期目。',
-        icon: 'tabler:user-star',
+        title: 'メンバー：山下芳一',
+        description: '精華町議会議員。高齢者福祉と防災対策の強化に取り組みます。',
+        icon: 'tabler:heart-handshake',
       },
     ]}
   />
 
-  {/* --- 3. 人となり（趣味・家族など） --- */}
+  {/* --- 3. 会派の理念 --- */}
   <Content
     isReversed
-    title="人となり"
-    subtitle="政治の場を離れた、一市民としての私"
+    title="会派の理念"
+    subtitle="爽風会が目指す市政"
     items={[
       {
-        title: '家族構成',
-        description: '妻と二人の子供（20代）の4人家族。',
+        title: '住民参加型の市政',
+        description: '住民の声を真摯に聴き、市政に反映させることで、開かれた議会運営を目指します。',
         icon: 'tabler:users',
       },
       {
-        title: '趣味',
-        description: 'プロ野球観戦が趣味です。特にNPBの熱い試合には元気をもらっています。',
-        icon: 'tabler:ball-baseball',
+        title: '透明性と説明責任',
+        description: '議会活動の情報を積極的に公開し、住民の皆様に分かりやすく説明します。',
+        icon: 'tabler:eye',
       },
       {
-        title: '座右の銘',
-        description: '「一念通天」。信念を持って取り組めば、必ず道は開けると信じています。',
-        icon: 'tabler:quote',
+        title: '地域の課題解決',
+        description: '少子高齢化、防災、経済活性化など、地域が直面する課題に実効性のある対策を提案します。',
+        icon: 'tabler:target',
       },
     ]}
     image={{
       src: heroImage,
-      alt: 'イメージ画像',
+      alt: '精華町の風景',
     }}
   />
 </Layout>
