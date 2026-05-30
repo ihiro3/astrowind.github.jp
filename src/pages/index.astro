@@ -15,6 +15,8 @@ const policyImage =
   'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
 const eventImage =
   'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
+const snsImage =
+  'https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
 const heroImages = [
   'assets/images/hero.jpg',
   'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
@@ -24,22 +26,34 @@ const heroImages = [
 
 <Layout metadata={metadata}>
   {/* --- 1. ヒーローセクション（サイトの顔） --- */}
-  <Hero
-    actions={[
-      { variant: 'primary', text: '活動報告を見る', href: '/blog' },
-      { text: 'お問い合わせ', href: '/contact' },
-    ]}
-    image={{ src: heroImages[0], alt: '爽風会のメンバー', id: 'hero-image' }}
-  >
-    <Fragment slot="title">
-      精華町の未来を切り拓く、<br />
-      <span class="text-accent dark:text-white highlight">爽風会</span> の公式サイト
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      皆様の声を町政に届け、より良い街づくりを。代表：岡田三郎、経理責任者：辻井崇余、メンバー：尾崎智、山下芳一
-    </Fragment>
-  </Hero>
+  <section class="relative md:-mt-[76px] not-prose">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
+      <div class="py-12 md:py-20">
+        <div class="text-center pb-10 md:pb-16 max-w-5xl mx-auto">
+          <h1 class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200">
+            精華町の未来を切り拓く、<br />
+            <span class="text-accent dark:text-white highlight">爽風会</span> の公式サイト
+          </h1>
+          <p class="text-xl text-muted mb-6 dark:text-slate-300">
+            皆様の声を町政に届け、より良い街づくりを。
+          </p>
+          <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4">
+            <a href="/blog" class="w-full sm:w-auto btn btn-primary">活動報告を見る</a>
+            <a href="/contact" class="w-full sm:w-auto btn">お問い合わせ</a>
+          </div>
+        </div>
+        <div class="relative m-auto max-w-5xl">
+          <img
+            id="hero-slideshow"
+            src={heroImages[0]}
+            alt="爽風会のメンバー"
+            class="mx-auto rounded-md w-full"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
 
   {/* --- 2. 政策提言セクション（3本柱） --- */}
   <Features2
@@ -156,7 +170,7 @@ const heroImages = [
       },
     ]}
     image={{
-      src: heroImage,
+      src: snsImage,
       alt: 'SNS',
     }}
   />
@@ -169,12 +183,28 @@ const heroImages = [
     'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
   ];
   let currentIndex = 0;
-  const heroImageElement = document.querySelector('#hero-image img');
   
-  if (heroImageElement) {
-    setInterval(() => {
+  function rotateHeroImage() {
+    const heroImageElement = document.querySelector('img[alt="爽風会のメンバー"]') as HTMLImageElement;
+    if (heroImageElement) {
       currentIndex = (currentIndex + 1) % heroImages.length;
       heroImageElement.src = heroImages[currentIndex];
-    }, 5000); // 5秒ごとに画像を切り替え
+      console.log('Image rotated to:', heroImages[currentIndex]);
+    } else {
+      console.log('Hero image element not found');
+    }
+  }
+  
+  // DOMが読み込まれた後に実行
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('DOM loaded, starting slideshow');
+      setTimeout(rotateHeroImage, 5000);
+      setInterval(rotateHeroImage, 5000);
+    });
+  } else {
+    console.log('DOM already loaded, starting slideshow');
+    setTimeout(rotateHeroImage, 5000);
+    setInterval(rotateHeroImage, 5000);
   }
 </script>
