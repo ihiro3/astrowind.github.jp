@@ -3,6 +3,7 @@ import Layout from '../layouts/PageLayout.astro';
 import Hero from '../components/widgets/Hero.astro';
 import Features2 from '../components/widgets/Features2.astro';
 import BlogLatestPosts from '../components/widgets/BlogLatestPosts.astro';
+import Content from '../components/widgets/Content.astro';
 
 const metadata = {
   title: '精華町議会 爽風会 公式サイト',
@@ -10,6 +11,7 @@ const metadata = {
 };
 
 const heroImage = 'assets/images/hero.jpg';
+const policyImage = 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
 ---
 
 <Layout metadata={metadata}>
@@ -27,7 +29,7 @@ const heroImage = 'assets/images/hero.jpg';
     </Fragment>
 
     <Fragment slot="subtitle">
-      皆様の声を市政に届け、より良い街づくりを。代表：岡田三郎、経理責任者：辻井崇余、メンバー：尾崎智、山下芳一
+      皆様の声を町政に届け、より良い街づくりを。代表：岡田三郎、経理責任者：辻井崇余、メンバー：尾崎智、山下芳一
     </Fragment>
   </Hero>
 
@@ -54,11 +56,96 @@ const heroImage = 'assets/images/hero.jpg';
         icon: 'tabler:shield-check',
       },
     ]}
+    image={{
+      src: policyImage,
+      alt: '政策提言',
+    }}
   />
 
   {/* --- 3. 最新の活動報告（自動でブログ記事を表示） --- */}
   <BlogLatestPosts
     title="最新の活動報告"
-    information={`日々の議員活動や市政の情報を随時更新しています。ぜひご覧ください。`}
+    information={`日々の議員活動や町政の情報を随時更新しています。ぜひご覧ください。`}
+  />
+
+  {/* --- 4. 最新情報セクション --- */}
+  <Content
+    title="最新情報"
+    subtitle="爽風会からの重要なお知らせ"
+    items={[
+      {
+        title: '議会活動の更新',
+        description: '精華町議会での最新の活動状況を随時更新しています。',
+        icon: 'tabler:news',
+      },
+      {
+        title: '政策提言の公開',
+        description: '精華町の未来を創る政策提言を積極的に公開しています。',
+        icon: 'tabler:file-text',
+      },
+      {
+        title: '地域イベントへの参加',
+        description: '地域の皆様との交流を深めるイベントに参加しています。',
+        icon: 'tabler:calendar-event',
+      },
+    ]}
+    image={{
+      src: policyImage,
+      alt: '最新情報',
+    }}
+  />
+
+  {/* --- 5. イベント情報セクション --- */}
+  <Content
+    isReversed
+    title="イベント情報"
+    subtitle="爽風会が主催・参加するイベント"
+    items={[
+      {
+        title: '議会報告会',
+        description: '精華町議会での活動報告会を開催します。詳細はお問い合わせください。',
+        icon: 'tabler:presentation',
+      },
+      {
+        title: '地域懇談会',
+        description: '地域の皆様と意見交換を行う懇談会を企画しています。',
+        icon: 'tabler:users',
+      },
+      {
+        title: '町政説明会',
+        description: '精華町の町政について分かりやすく説明する会を開催します。',
+        icon: 'tabler:info-circle',
+      },
+    ]}
+  />
+
+  {/* --- 6. SNSセクション --- */}
+  <Content
+    title="SNSで最新情報を受け取る"
+    subtitle="爽風会の公式SNSアカウント"
+    items={[
+      {
+        title: 'X（旧Twitter）',
+        description: '爽風会の最新情報をリアルタイムでお届けします。',
+        icon: 'tabler:brand-x',
+        link: '#',
+      },
+      {
+        title: 'Facebook',
+        description: '活動写真やイベント情報を公開しています。',
+        icon: 'tabler:brand-facebook',
+        link: '#',
+      },
+      {
+        title: 'Instagram',
+        description: '日々の活動の様子を写真で紹介しています。',
+        icon: 'tabler:brand-instagram',
+        link: '#',
+      },
+    ]}
+    image={{
+      src: heroImage,
+      alt: 'SNS',
+    }}
   />
 </Layout>

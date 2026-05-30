@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/PageLayout.astro';
+import Hero from '../components/widgets/Hero.astro';
+import Content from '../components/widgets/Content.astro';
+
+const metadata = {
+  title: '過去の活動報告 | 精華町議会 爽風会 公式サイト',
+};
+
+const heroImage =
+  'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
+---
+
+<Layout metadata={metadata}>
+  {/* --- 1. 活動報告冒頭 --- */}
+  <Hero
+    tagline="Activities"
+    image={{
+      src: heroImage,
+      alt: '爽風会の活動',
+    }}
+  >
+    <Fragment slot="title">
+      爽風会の<br />
+      <span class="text-accent dark:text-white highlight">過去の活動報告</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      精華町議会での爽風会の活動記録をご紹介します。町政に取り組む議員会派としての活動を公開しています。
+    </Fragment>
+  </Hero>
+
+  {/* --- 2. 議会活動へのリンク --- */}
+  <Content
+    title="精華町議会公式サイト"
+    subtitle="議会活動の詳細情報"
+    items={[
+      {
+        title: '会派代表質問通告書',
+        description: '爽風会を含む各会派の代表質問通告書を確認できます。精華町議会の公式サイトで公開されています。',
+        icon: 'tabler:file-text',
+        link: 'https://www.town.seika.kyoto.jp/gikai/kekka/honkaigi/9/index.html',
+      },
+      {
+        title: '会議録',
+        description: '本会議や委員会の会議録を確認できます。爽風会議員の発言内容も記録されています。',
+        icon: 'tabler:book',
+        link: 'https://www.town.seika.kyoto.jp/gikai/kouhou/8669.html',
+      },
+      {
+        title: '議会活動',
+        description: '議会報告会、議会を知る会などの活動情報を確認できます。',
+        icon: 'tabler:users',
+        link: 'https://www.town.seika.kyoto.jp/gikai/kouhou/katudou/index.html',
+      },
+      {
+        title: '意見書・決議',
+        description: '爽風会が提出または賛成した意見書・決議を確認できます。',
+        icon: 'tabler:file-description',
+        link: 'https://www.town.seika.kyoto.jp/gikai/kekka/honkaigi/1/index.html',
+      },
+    ]}
+    image={{
+      src: heroImage,
+      alt: '精華町議会',
+    }}
+  />
+
+  {/* --- 3. 爽風会の活動資料 --- */}
+  <Content
+    title="爽風会の活動資料"
+    subtitle="精華町議会で公開されている爽風会の資料"
+    items={[
+      {
+        title: '令和7年度活動報告',
+        description: '令和7年度の爽風会の活動報告書（PDF）',
+        icon: 'tabler:file-pdf',
+        link: 'https://www.town.seika.kyoto.jp/material/files/group/31/R7N45soufu431.pdf',
+      },
+      {
+        title: '令和7年度活動報告（別資料）',
+        description: '令和7年度の爽風会の活動報告書（PDF）',
+        icon: 'tabler:file-pdf',
+        link: 'https://www.town.seika.kyoto.jp/material/files/group/31/R7N45soufu401.pdf',
+      },
+      {
+        title: '令和6年度活動報告',
+        description: '令和6年度の爽風会の活動報告書（PDF）',
+        icon: 'tabler:file-pdf',
+        link: 'https://www.town.seika.kyoto.jp/material/files/group/31/R6Nsoufu431.pdf',
+      },
+      {
+        title: '令和5年度活動報告',
+        description: '令和5年度の爽風会の活動報告書（PDF）',
+        icon: 'tabler:file-pdf',
+        link: 'https://www.town.seika.kyoto.jp/material/files/group/31/331sofukaiR5.pdf',
+      },
+      {
+        title: '広報広聴費報告書',
+        description: '爽風会の広報広聴費に関する報告書（PDF）',
+        icon: 'tabler:file-pdf',
+        link: 'https://www.town.seika.kyoto.jp/material/files/group/31/souhuukaikouhoukoutyouhi.pdf',
+      },
+      {
+        title: '広報広聴費報告書（その他）',
+        description: '広報広聴費に関する報告書（PDF）',
+        icon: 'tabler:file-pdf',
+        link: 'https://www.town.seika.kyoto.jp/material/files/group/31/kouhoukouchou030405.pdf',
+      },
+      {
+        title: '爽風会広報広聴費報告',
+        description: '爽風会の広報広聴費報告（PDF）',
+        icon: 'tabler:file-pdf',
+        link: 'https://www.town.seika.kyoto.jp/material/files/group/31/soufuukaihoukoukouchou02.pdf',
+      },
+    ]}
+    image={{
+      src: heroImage,
+      alt: '爽風会の資料',
+    }}
+  />
+
+  {/* --- 4. 年次別活動報告 --- */}
+  <Content
+    isReversed
+    title="年次別活動報告"
+    subtitle="爽風会の主な活動"
+    items={[
+      {
+        title: '令和7年度（2025年度）',
+        description: '子育て・教育環境の充実、高齢者福祉の強化、地元経済の活性化に取り組んでいます。',
+        icon: 'tabler:calendar',
+      },
+      {
+        title: '令和6年度（2024年度）',
+        description: '待機児童対策の継続、学校施設の老朽化対策、地域包括ケアシステムの強化を推進しました。',
+        icon: 'tabler:calendar',
+      },
+      {
+        title: '令和5年度（2023年度）',
+        description: 'ICT教育の導入支援、災害に強い街づくり、商店街の再生に取り組みました。',
+        icon: 'tabler:calendar',
+      },
+    ]}
+  />
+</Layout>

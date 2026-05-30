@@ -14,6 +14,7 @@ export const headerData: {
     { text: 'トップ', href: '/' },
     { text: '政策提言', href: '/#policy' },
     { text: '活動報告', href: getBlogPermalink() },
+    { text: '過去の活動報告', href: '/activities' },
     { text: 'プロフィール', href: '/about' },
     { text: 'お問い合わせ', href: '/contact' }, // ← ヘッダーに追加
   ],
@@ -28,6 +29,7 @@ export const footerData = {
         { text: 'トップ', href: '/' },
         { text: '政策提言', href: '/#policy' },
         { text: '活動報告', href: '/blog' },
+        { text: '過去の活動報告', href: '/activities' },
       ],
     },
     {
@@ -45,6 +47,6 @@ export const footerData = {
     { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
   ],
   footNote: `
-    © 2026 山下○○ All Rights Reserved.
+    © 2026 精華町議会 爽風会 All Rights Reserved.
   `,
 };
