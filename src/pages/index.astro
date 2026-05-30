@@ -13,6 +13,13 @@ const metadata = {
 const heroImage = 'assets/images/hero.jpg';
 const policyImage =
   'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
+const eventImage =
+  'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
+const heroImages = [
+  'assets/images/hero.jpg',
+  'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+  'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+];
 ---
 
 <Layout metadata={metadata}>
@@ -22,7 +29,7 @@ const policyImage =
       { variant: 'primary', text: '活動報告を見る', href: '/blog' },
       { text: 'お問い合わせ', href: '/contact' },
     ]}
-    image={{ src: heroImage, alt: '爽風会のメンバー' }}
+    image={{ src: heroImages[0], alt: '爽風会のメンバー', id: 'hero-image' }}
   >
     <Fragment slot="title">
       精華町の未来を切り拓く、<br />
@@ -118,6 +125,10 @@ const policyImage =
         icon: 'tabler:info-circle',
       },
     ]}
+    image={{
+      src: eventImage,
+      alt: 'イベント情報',
+    }}
   />
 
   {/* --- 6. SNSセクション --- */}
@@ -150,3 +161,20 @@ const policyImage =
     }}
   />
 </Layout>
+
+<script>
+  const heroImages = [
+    'assets/images/hero.jpg',
+    'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+  ];
+  let currentIndex = 0;
+  const heroImageElement = document.querySelector('#hero-image img');
+  
+  if (heroImageElement) {
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % heroImages.length;
+      heroImageElement.src = heroImages[currentIndex];
+    }, 5000); // 5秒ごとに画像を切り替え
+  }
+</script>
