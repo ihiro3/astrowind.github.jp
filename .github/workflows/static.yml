@@ -44,7 +44,9 @@ jobs:
         run: pnpm run build
 
       - name: Create .nojekyll
-        run: touch ./dist/.nojekyll
+        run: |
+          touch ./dist/.nojekyll
+          echo "Created .nojekyll file to disable Jekyll processing"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
