@@ -1,29 +1,9 @@
 import getReadingTime from 'reading-time';
 import { toString } from 'mdast-util-to-string';
-import { visit } from 'unist-util-visit';
-import type { Plugin } from 'unified';
-import type { Node, Parent } from 'unist';
-
-type RemarkPlugin = Plugin<unknown[], string | Node | undefined>;
-type RehypePlugin = Plugin<unknown[], string | Node | undefined>;
-
-interface Element extends Node {
-  type: 'element';
-  tagName: string;
-  properties?: Record<string, unknown>;
-  children?: Node[];
-}
-
-interface VFileLike {
-  data?: {
-    astro?: {
-      frontmatter?: Record<string, unknown>;
-    };
-  };
-}
+import type { RehypePlugin, RemarkPlugin } from '@astrojs/markdown-remark';
 
 export const readingTimeRemarkPlugin: RemarkPlugin = () => {
-  return function (tree: Node, file: VFileLike) {
+  return function (tree, file) {
     const textOnPage = toString(tree);
     const readingTime = Math.ceil(getReadingTime(textOnPage).minutes);
 
@@ -34,11 +14,11 @@ export const readingTimeRemarkPlugin: RemarkPlugin = () => {
 };
 
 export const responsiveTablesRehypePlugin: RehypePlugin = () => {
-  return function (tree: Parent) {
+  return function (tree) {
     if (!tree.children) return;
 
     for (let i = 0; i < tree.children.length; i++) {
-      const child = tree.children[i] as Element;
+      const child = tree.children[i];
 
       if (child.type === 'element' && child.tagName === 'table') {
         tree.children[i] = {
@@ -48,23 +28,10 @@ export const responsiveTablesRehypePlugin: RehypePlugin = () => {
             style: 'overflow:auto',
           },
           children: [child],
-        } as Element;
+        };
 
         i++;
       }
     }
-  };
-};
-
-export const lazyImagesRehypePlugin: RehypePlugin = () => {
-  return function (tree: Parent) {
-    if (!tree.children) return;
-
-    visit(tree, 'element', function (node: Element) {
-      if (node.tagName === 'img') {
-        node.properties = node.properties || {};
-        node.properties.loading = 'lazy';
-      }
-    });
   };
 };
