@@ -11,10 +11,6 @@ permissions:
   pages: write
   id-token: write
 
-env:
-  # Node.js 24 への警告に対応
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -27,13 +23,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '24'
           cache: 'pnpm'
@@ -45,13 +41,11 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Build
-        # Astroなどのビルドを実行し、公開用のファイルを作成します
         run: pnpm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # ビルドされた成果物（通常は dist フォルダ）を指定します
           path: './dist'
 
       - name: Deploy to GitHub Pages
