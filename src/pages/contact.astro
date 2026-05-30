@@ -2,14 +2,14 @@
 import Layout from '../layouts/PageLayout.astro';
 import ContactUs from '../components/widgets/Contact.astro';
 import Hero from '../components/widgets/Hero.astro';
-import HeroText from '../components/widgets/HeroText.astro';
 import Features2 from '../components/widgets/Features2.astro';
 
 const metadata = {
   title: 'お問い合わせ・事務所案内 | 精華町議会 爽風会 公式サイト',
 };
 
-const heroImage = 'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
+const heroImage =
+  'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
 ---
 
 <Layout metadata={metadata}>
@@ -26,9 +26,7 @@ const heroImage = 'https://images.unsplash.com/photo-1497366216548-37526070297c?
       <span class="text-accent dark:text-white highlight">事務所案内</span>
     </Fragment>
 
-    <Fragment slot="subtitle">
-      町政に関するご相談や、地域の課題についてお気軽にご連絡ください。
-    </Fragment>
+    <Fragment slot="subtitle"> 町政に関するご相談や、地域の課題についてお気軽にご連絡ください。 </Fragment>
   </Hero>
 
   {/* 2. 事務所情報（追加部分） */}
