@@ -1,11 +1,11 @@
 # サイト全体の基本情報
 site:
-  name: '精華町議会 爽風会 公式サイト'
+  name: '精華町議会 爽風会'
   origin: 'https://astrowind-github-jp.vercel.app'
   basePathname: '/'
   trailingSlash: false
 
-  title: '精華町議会 爽風会 公式サイト'
+  title: '精華町議会 爽風会'
   description: '精華町の未来を切り拓く。爽風会の活動報告、政策、プロフィールをお届けします。代表：岡田三郎、経理責任者：辻井崇余、メンバー：尾崎智、山下芳一'
 
 # ブログ（活動履歴）の設定

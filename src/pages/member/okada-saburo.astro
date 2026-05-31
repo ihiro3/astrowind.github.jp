@@ -1,0 +1,78 @@
+---
+import Layout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/widgets/Hero.astro';
+import Content from '../../components/widgets/Content.astro';
+import noImage from '../../assets/images/no-image_p.png';
+
+const metadata = {
+  title: '岡田三郎 | 精華町議会 爽風会',
+};
+
+const heroImage = noImage;
+---
+
+<Layout metadata={metadata}>
+  <Hero
+    tagline="Member Profile"
+    image={{
+      src: heroImage,
+      alt: '岡田三郎',
+    }}
+    isPortrait={true}
+  >
+    <Fragment slot="title"> 岡田三郎（おかだ さぶろう） </Fragment>
+
+    <Fragment slot="subtitle"> 爽風会 代表・精華町議会議員 </Fragment>
+  </Hero>
+
+  <Content
+    title="プロフィール"
+    subtitle="地域の声を町政に届け、より良い街づくりに尽力します。"
+    items={[
+      {
+        title: '経歴',
+        description: '2回当選（2025年、2021年）。精華町議会議員。地域の声を町政に届け、より良い街づくりに尽力します。',
+        icon: 'tabler:user',
+      },
+      {
+        title: '政策',
+        description: '住民参加型の町政、透明性と説明責任、地域の課題解決に取り組みます。',
+        icon: 'tabler:flag',
+      },
+      {
+        title: '活動',
+        description: '定例会での質問、地域懇談会の開催、住民からの相談対応などを行っています。',
+        icon: 'tabler:activity',
+      },
+      {
+        title: 'メール',
+        description: 'seika_okada@outlook.com',
+        icon: 'tabler:mail',
+        callToAction: { text: 'メールを送る', href: 'mailto:seika_okada@outlook.com' },
+      },
+    ]}
+  />
+
+  <Content
+    isReversed
+    title="SNS"
+    subtitle="最新情報をお届けします"
+    items={[
+      {
+        title: 'X (Twitter)',
+        description: '活動報告や政策情報を発信しています。',
+        icon: 'tabler:brand-x',
+      },
+      {
+        title: 'Facebook',
+        description: '地域の皆様との交流を大切にしています。',
+        icon: 'tabler:brand-facebook',
+      },
+      {
+        title: 'Instagram',
+        description: '議員活動の様子を写真で紹介しています。',
+        icon: 'tabler:brand-instagram',
+      },
+    ]}
+  />
+</Layout>

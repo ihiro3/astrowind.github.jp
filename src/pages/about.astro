@@ -3,9 +3,13 @@ import Layout from '../layouts/PageLayout.astro';
 import Hero from '../components/widgets/Hero.astro';
 import Content from '../components/widgets/Content.astro';
 import Steps from '../components/widgets/Steps.astro';
+import noImage from '../assets/images/no-image_p.png';
+import tsujiiMitsuyo from '../assets/images/tsujii-mitsuyo.png';
+import ozakiSatoshi from '../assets/images/ozaki-satoshi.png';
+import yamashitaYoshikazu from '../assets/images/yamashita-yoshikazu.png';
 
 const metadata = {
-  title: 'プロフィール | 精華町議会 爽風会 公式サイト',
+  title: 'プロフィール | 精華町議会 爽風会',
 };
 
 const profileImage = 'assets/images/team.jpg';
@@ -29,9 +33,7 @@ const heroImage =
       <span class="text-accent dark:text-white highlight">皆様と共に創る。</span>
     </Fragment>
 
-    <Fragment slot="subtitle">
-      爽風会は、精華町の発展と住民の幸せを願い、町政に取り組む議員会派です。代表：岡田三郎、経理責任者：辻井崇余、メンバー：尾崎智、山下芳一
-    </Fragment>
+    <Fragment slot="subtitle"> 爽風会は、精華町の発展と住民の幸せを願い、町政に取り組む議員会派です。 </Fragment>
   </Hero>
 
   {/* --- 2. 会派メンバー --- */}
@@ -43,24 +45,32 @@ const heroImage =
     }}
     items={[
       {
-        title: '代表：岡田三郎',
+        title: '代表：岡田三郎（おかだ さぶろう）',
         description: '精華町議会議員。地域の声を町政に届け、より良い街づくりに尽力します。',
         icon: 'tabler:user-star',
+        callToAction: { text: '詳細を見る', href: '/member/okada-saburo' },
+        image: noImage,
       },
       {
-        title: '経理責任者：辻井崇余',
+        title: '辻井崇余（つじい みつよ）',
         description: '精華町議会議員。透明性のある町政運営と財政健全化を推進します。',
         icon: 'tabler:calculator',
+        callToAction: { text: '詳細を見る', href: '/member/tsujii-mitsuyo' },
+        image: tsujiiMitsuyo,
       },
       {
-        title: 'メンバー：尾崎智',
+        title: '尾崎智（おざき さとし）',
         description: '精華町議会議員。子育て・教育環境の充実に重点を置いて活動します。',
         icon: 'tabler:school',
+        callToAction: { text: '詳細を見る', href: '/member/ozaki-satoshi' },
+        image: ozakiSatoshi,
       },
       {
-        title: 'メンバー：山下芳一',
+        title: '山下芳一（やました よしかず）',
         description: '精華町議会議員。高齢者福祉と防災対策の強化に取り組みます。',
         icon: 'tabler:heart-handshake',
+        callToAction: { text: '詳細を見る', href: '/member/yamashita-yoshikazu' },
+        image: yamashitaYoshikazu,
       },
     ]}
   />

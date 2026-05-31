@@ -1,0 +1,77 @@
+---
+import Layout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/widgets/Hero.astro';
+import Content from '../../components/widgets/Content.astro';
+import ozakiSatoshi from '../../assets/images/ozaki-satoshi.png';
+
+const metadata = {
+  title: '尾崎智 | 精華町議会 爽風会',
+};
+
+const heroImage = ozakiSatoshi;
+---
+
+<Layout metadata={metadata}>
+  <Hero
+    tagline="Member Profile"
+    image={{
+      src: heroImage,
+      alt: '尾崎智',
+    }}
+    isPortrait={true}
+  >
+    <Fragment slot="title"> 尾崎智（おざき さとし） </Fragment>
+
+    <Fragment slot="subtitle"> 精華町議会議員 </Fragment>
+  </Hero>
+
+  <Content
+    title="プロフィール"
+    subtitle="防災・福祉・子育て支援に重点を置いて活動します。"
+    items={[
+      {
+        title: '経歴',
+        description:
+          '1回当選（2025年）。公務員歴16年半（陸上自衛隊3年、大阪市消防職員13年半）。2007年陸上自衛隊少年工科学校、2011年大阪市消防局入局、2018年大阪市消防局本部、2021年中央区防火防災担当主任、2022年精華町移住、2025年Webマーケティング会社取締役、2025年精華町議会議員選挙立候補。',
+        icon: 'tabler:user',
+      },
+      {
+        title: '政策',
+        description:
+          '防災・災害対策、高齢者福祉、子育て支援に注力します。災害現場での経験を活かし、もしもに強い町づくりを推進します。',
+        icon: 'tabler:flag',
+      },
+      {
+        title: '活動',
+        description: '防災・福祉・子育て関連の委員会で活動し、地域の皆様との交流を大切にしています。',
+        icon: 'tabler:activity',
+      },
+      {
+        title: 'メール',
+        description: 'seika_ozaki@outlook.com',
+        icon: 'tabler:mail',
+        callToAction: { text: 'メールを送る', href: 'mailto:seika_ozaki@outlook.com' },
+      },
+    ]}
+  />
+
+  <Content
+    isReversed
+    title="SNS"
+    subtitle="最新情報をお届けします"
+    items={[
+      {
+        title: '公式サイト',
+        description: '尾崎さとしの公式ホームページ',
+        icon: 'tabler:world',
+        callToAction: { text: 'サイトを見る', href: 'https://ozakisatoshi.jp/' },
+      },
+      {
+        title: 'Instagram',
+        description: '議員活動の様子を写真で紹介しています。',
+        icon: 'tabler:brand-instagram',
+        callToAction: { text: 'Instagramを見る', href: 'https://www.instagram.com/ozakisatoshi_seika/' },
+      },
+    ]}
+  />
+</Layout>

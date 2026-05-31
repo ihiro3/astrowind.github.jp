@@ -3,7 +3,8 @@ import { getBlogPermalink } from './utils/permalinks';
 
 type HeaderLink = {
   text: string;
-  href: string;
+  href?: string;
+  links?: HeaderLink[];
 };
 
 export const headerData: {
@@ -15,8 +16,17 @@ export const headerData: {
     { text: '政策提言', href: '/#policy' },
     { text: '活動報告', href: getBlogPermalink() },
     { text: '過去の活動報告', href: '/activities' },
-    { text: 'プロフィール', href: '/about' },
-    { text: 'お問い合わせ', href: '/contact' }, // ← ヘッダーに追加
+    {
+      text: 'プロフィール',
+      links: [
+        { text: '会派概要', href: '/about' },
+        { text: '岡田三郎', href: '/member/okada-saburo' },
+        { text: '辻井崇余', href: '/member/tsujii-mitsuyo' },
+        { text: '尾崎智', href: '/member/ozaki-satoshi' },
+        { text: '山下芳一', href: '/member/yamashita-yoshikazu' },
+      ],
+    },
+    { text: 'お問い合わせ', href: '/contact' },
   ],
   actions: [{ text: '公式LINE', href: 'https://line.me/R/ti/p/...', variant: 'primary' }],
 };
