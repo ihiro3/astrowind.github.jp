@@ -1,0 +1,78 @@
+---
+import Layout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/widgets/Hero.astro';
+import Content from '../../components/widgets/Content.astro';
+import yamashitaYoshikazu from '../../assets/images/yamashita-yoshikazu.png';
+
+const metadata = {
+  title: '山下芳一 | 精華町議会 爽風会',
+};
+
+const heroImage = yamashitaYoshikazu;
+---
+
+<Layout metadata={metadata}>
+  <Hero
+    tagline="Member Profile"
+    image={{
+      src: heroImage,
+      alt: '山下芳一',
+    }}
+    isPortrait={true}
+  >
+    <Fragment slot="title"> 山下芳一（やました よしかず） </Fragment>
+
+    <Fragment slot="subtitle"> 精華町議会議員 </Fragment>
+  </Hero>
+
+  <Content
+    title="プロフィール"
+    subtitle="高齢者福祉と防災対策の強化に取り組みます。"
+    items={[
+      {
+        title: '経歴',
+        description: '3回当選（2025年、2021年、2017年）。精華町議会議員。高齢者福祉と防災対策の強化に取り組みます。',
+        icon: 'tabler:user',
+      },
+      {
+        title: '政策',
+        description: '高齢者福祉の充実、防災対策の強化、地域の安全安心な環境づくりに注力します。',
+        icon: 'tabler:flag',
+      },
+      {
+        title: '活動',
+        description: '福祉委員会、防災会議などで活動し、高齢者施設の訪問や防災訓練の支援を行っています。',
+        icon: 'tabler:activity',
+      },
+      {
+        title: 'メール',
+        description: 'seika_yamashita@outlook.com',
+        icon: 'tabler:mail',
+        callToAction: { text: 'メールを送る', href: 'mailto:seika_yamashita@outlook.com' },
+      },
+    ]}
+  />
+
+  <Content
+    isReversed
+    title="SNS"
+    subtitle="最新情報をお届けします"
+    items={[
+      {
+        title: 'X (Twitter)',
+        description: '活動報告や政策情報を発信しています。',
+        icon: 'tabler:brand-x',
+      },
+      {
+        title: 'Facebook',
+        description: '地域の皆様との交流を大切にしています。',
+        icon: 'tabler:brand-facebook',
+      },
+      {
+        title: 'Instagram',
+        description: '議員活動の様子を写真で紹介しています。',
+        icon: 'tabler:brand-instagram',
+      },
+    ]}
+  />
+</Layout>

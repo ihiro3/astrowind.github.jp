@@ -1,6 +1,9 @@
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import type { HTMLAttributes, ImageMetadata } from 'astro/types';
 
+// Re-export ImageMetadata for use in other components
+export type { ImageMetadata };
+
 export interface Post {
   /** A unique ID number that identifies a post. */
   id: string;
@@ -138,7 +141,7 @@ export interface Item {
   icon?: string;
   classes?: Record<string, string>;
   callToAction?: CallToAction;
-  image?: Image;
+  image?: Image | ImageMetadata;
 }
 
 export interface Price {
@@ -217,6 +220,7 @@ export interface Hero extends Omit<Headline, 'classes'>, Omit<Widget, 'isDark' |
   content?: string;
   actions?: string | CallToAction[];
   image?: string | unknown;
+  isPortrait?: boolean;
 }
 
 export interface Team extends Omit<Headline, 'classes'>, Widget {

@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/widgets/Hero.astro';
+import Content from '../../components/widgets/Content.astro';
+import tsujiiMitsuyo from '../../assets/images/tsujii-mitsuyo.png';
+
+const metadata = {
+  title: '辻井崇余 | 精華町議会 爽風会',
+};
+
+const heroImage = tsujiiMitsuyo;
+---
+
+<Layout metadata={metadata}>
+  <Hero
+    tagline="Member Profile"
+    image={{
+      src: heroImage,
+      alt: '辻井崇余',
+    }}
+    isPortrait={true}
+  >
+    <Fragment slot="title"> 辻井崇余（つじい みつよ） </Fragment>
+
+    <Fragment slot="subtitle"> 精華町議会議員 </Fragment>
+  </Hero>
+
+  <Content
+    title="プロフィール"
+    subtitle="透明性のある町政運営と財政健全化を推進します。"
+    items={[
+      {
+        title: '経歴',
+        description: '1回当選（2025年）。精華町議会議員。透明性のある町政運営と財政健全化を推進します。',
+        icon: 'tabler:user',
+      },
+      {
+        title: '政策',
+        description: '財政健全化、透明性のある町政運営、効率的な行政サービスの提供に取り組みます。',
+        icon: 'tabler:flag',
+      },
+      {
+        title: '活動',
+        description: '予算審議、決算審査、監査委員会など財政関連の業務を担当しています。',
+        icon: 'tabler:activity',
+      },
+      {
+        title: 'メール',
+        description: 'seika_tsujii@outlook.com',
+        icon: 'tabler:mail',
+        callToAction: { text: 'メールを送る', href: 'mailto:seika_tsujii@outlook.com' },
+      },
+    ]}
+  />
+
+  <Content
+    isReversed
+    title="SNS"
+    subtitle="最新情報をお届けします"
+    items={[
+      {
+        title: 'Instagram',
+        description: '議員活動の様子を写真で紹介しています。',
+        icon: 'tabler:brand-instagram',
+        callToAction: { text: 'Instagramを見る', href: 'https://www.instagram.com/tsujii.mitsuyo/' },
+      },
+      {
+        title: 'X (Twitter)',
+        description: '活動報告や政策情報を発信しています。',
+        icon: 'tabler:brand-x',
+        callToAction: { text: 'Xを見る', href: 'https://x.com/KytIshin/status/1919694925488165020' },
+      },
+    ]}
+  />
+</Layout>

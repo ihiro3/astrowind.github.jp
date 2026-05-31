@@ -4,11 +4,17 @@ import Hero from '../components/widgets/Hero.astro';
 import Content from '../components/widgets/Content.astro';
 
 const metadata = {
-  title: '過去の活動報告 | 精華町議会 爽風会 公式サイト',
+  title: '過去の活動報告 | 精華町議会 爽風会',
 };
 
 const heroImage =
   'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
+const officialSiteImage =
+  'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
+const materialsImage =
+  'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
+const annualImage =
+  'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80';
 ---
 
 <Layout metadata={metadata}>
@@ -32,12 +38,12 @@ const heroImage =
 
   {/* --- 2. 議会活動へのリンク --- */}
   <Content
-    title="精華町議会公式サイト"
+    title="精華町議会サイト"
     subtitle="議会活動の詳細情報"
     items={[
       {
         title: '会派代表質問通告書',
-        description: '爽風会を含む各会派の代表質問通告書を確認できます。精華町議会の公式サイトで公開されています。',
+        description: '爽風会を含む各会派の代表質問通告書を確認できます。精華町議会のサイトで公開されています。',
         icon: 'tabler:file-text',
         callToAction: { text: '詳細を見る', href: 'https://www.town.seika.kyoto.jp/gikai/kekka/honkaigi/9/index.html' },
       },
@@ -61,7 +67,7 @@ const heroImage =
       },
     ]}
     image={{
-      src: heroImage,
+      src: officialSiteImage,
       alt: '精華町議会',
     }}
   />
@@ -136,7 +142,7 @@ const heroImage =
       },
     ]}
     image={{
-      src: heroImage,
+      src: materialsImage,
       alt: '爽風会の資料',
     }}
   />
@@ -163,5 +169,9 @@ const heroImage =
         icon: 'tabler:calendar',
       },
     ]}
+    image={{
+      src: annualImage,
+      alt: '年次別活動報告',
+    }}
   />
 </Layout>
