@@ -1,7 +1,13 @@
 ---
 import Layout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/widgets/Hero.astro';
+import Content from '../../components/widgets/Content.astro';
 import { fetchBlogs, type Blog } from '../../lib/microcms.ts';
+import Image from '../../components/common/Image.astro';
+import reportImage1 from '../../assets/images/sofukai-report-44-1.png';
+import reportImage2 from '../../assets/images/sofukai-report-44-2.png';
+
+const reportPdf = '/sofukai-report-43.pdf';
 
 // 1. 重要：[...blog] という動的ルートを「/blog」として認識させるための設定
 export async function getStaticPaths() {
@@ -24,16 +30,9 @@ const heroImage =
 ---
 
 <Layout metadata={metadata}>
-  <Hero
-    tagline="Blog"
-    image={{
-      src: heroImage,
-      alt: '活動報告',
-    }}
-  >
-    <Fragment slot="title"> 活動報告 </Fragment>
-
-    <Fragment slot="subtitle"> 日々の議員活動や精華町の最新情報をお届けします。 </Fragment>
+  <Hero tagline="Blog" image={{ src: heroImage, alt: '活動報告' }}>
+    <Fragment slot="title">活動報告</Fragment>
+    <Fragment slot="subtitle">日々の議員活動や精華町の最新情報をお届けします。</Fragment>
   </Hero>
 
   <section class="px-6 py-12 sm:px-6 max-w-3xl mx-auto">
@@ -78,5 +77,73 @@ const heroImage =
         <p class="text-center text-gray-500 mt-10">現在、投稿されている記事はありません。</p>
       )
     }
+  </section>
+
+  {/* --- 爽風会の活動報告書 --- */}
+  <Content
+    title="爽風会の活動報告書 43号・44号"
+    subtitle="会派だよりとして公開している爽風会の活動報告書です。"
+    items={[
+      {
+        title: '爽風会会派だより43号',
+        description: '令和8年3月掲載の爽風会活動報告書です。PDFと画像でご覧いただけます。',
+        icon: 'tabler:file-text',
+      },
+      {
+        title: '爽風会会派だより44号',
+        description: '令和8年4月掲載の爽風会活動報告書です。現在は画像プレビューを公開しています。',
+        icon: 'tabler:file-text',
+      },
+    ]}
+    image={{
+      src: reportImage1,
+      alt: '爽風会会派だより43号の表紙',
+    }}
+  />
+
+  <section class="px-6 py-12 sm:px-6 max-w-5xl mx-auto">
+    <div class="mb-10 text-center">
+      <h2 class="text-3xl font-bold mb-2">活動報告書の画像</h2>
+      <p class="text-muted dark:text-slate-400">
+        43号と44号の表紙画像を確認できます。44号は準備中につき、まずは一覧でご覧ください。
+      </p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2">
+      <div
+        class="bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-gray-200 dark:border-slate-800 overflow-hidden"
+      >
+        <Image
+          src={reportImage1}
+          alt="爽風会会派だより43号"
+          class="w-full h-auto object-cover"
+          width={800}
+          height={1130}
+          layout="responsive"
+        />
+      </div>
+      <div
+        class="bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-gray-200 dark:border-slate-800 overflow-hidden"
+      >
+        <Image
+          src={reportImage2}
+          alt="爽風会会派だより44号"
+          class="w-full h-auto object-cover"
+          width={800}
+          height={1130}
+          layout="responsive"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 py-12 sm:px-6 max-w-5xl mx-auto">
+    <div class="bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-gray-200 dark:border-slate-800 p-6">
+      <h2 class="text-2xl font-bold mb-4">活動報告書 NO43号（PDF）</h2>
+      <p class="text-muted dark:text-slate-400 mb-4">こちらは43号のPDF版です。44号は現在公開準備中です。</p>
+      <iframe src={reportPdf} class="w-full h-[600px] border border-gray-300 rounded" title="活動報告NO43号"> </iframe>
+      <div class="mt-4 text-center">
+        <a href={reportPdf} download class="btn btn-primary"> PDFをダウンロード </a>
+      </div>
+    </div>
   </section>
 </Layout>
