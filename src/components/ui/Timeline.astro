@@ -37,7 +37,7 @@ const {
               <div class="flex items-center justify-center">
                 {image ? (
                   <Image
-                    src={typeof image === 'string' ? image : image}
+                    src={image}
                     alt={title || ''}
                     class="w-16 h-16 rounded-full object-cover"
                     width={64}
