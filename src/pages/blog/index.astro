@@ -140,7 +140,12 @@ const heroImage =
     <div class="bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-gray-200 dark:border-slate-800 p-6">
       <h2 class="text-2xl font-bold mb-4">活動報告書 NO43号（PDF）</h2>
       <p class="text-muted dark:text-slate-400 mb-4">こちらは43号のPDF版です。44号は現在公開準備中です。</p>
-      <iframe src={reportPdf} class="w-full h-[913px] border border-gray-300 rounded" title="活動報告NO43号"> </iframe>
+      <div class="w-full" style="position: relative; padding-bottom: 141.4%; height: 0;">
+        <iframe
+          src={reportPdf}
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 1px solid rgb(209, 213, 219); border-radius: 0.375rem;"
+          title="活動報告NO43号"></iframe>
+      </div>
       <div class="mt-4 text-center">
         <a href={reportPdf} download class="btn btn-primary"> PDFをダウンロード </a>
       </div>
