@@ -33,6 +33,7 @@
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
     "microcms-js-sdk": "^3.3.0",
+    "pdfjs-dist": "^6.0.227",
     "unpic": "^4.2.2"
   },
   "devDependencies": {
